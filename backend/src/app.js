@@ -1,9 +1,15 @@
 const express = require("express")
 const cookie = require("cookie-parser")
 const app = express()
+const cors = require("cors")
 
 const authRouter = require("./routes/auth.routes")
 const postRouter = require("./routes/post.routes")
+
+app.use(cors({
+    origin: ["http://127.0.0.1:5500", "http://localhost:5500", "YOUR_VERCEL_URL_HERE"], //  update the Vercel one
+    credentials: true // For cookies
+}));
 
 app.use(express.json())
 app.use(cookie())
